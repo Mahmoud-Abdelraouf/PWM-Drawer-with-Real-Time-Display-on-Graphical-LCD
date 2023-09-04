@@ -1,14 +1,12 @@
-/********************************************************/
-/********** Name    : Mahmoud a raoof mahmoud ***********/
-/********** Date    : 18/09/2022              ***********/
-/********** SWC     : DIO                     ***********/
-/********** Version : 1.0                     ***********/
-/********************************************************/
- #ifndef DIO_INTERFACE_H
- #define DIO_INTERFACE_H
+/**************************************************************************/
+/************** Name    : Mahmoud a raouf mahmoud *************************/
+/************** Date    : 18/09/2022              *************************/
+/************** SWC     : DIO                     *************************/
+/************** Version : 0.2                     *************************/
+/**************************************************************************/
+ #ifndef __DIO_INTERFACE_H_
+ #define __DIO_INTERFACE_H_
 
-#include "STD_TYPES.h"
-#include "ERROR_STATE.h"
 
 /* Macros for PORTS */
 #define DIO_u8_PORTA		0
@@ -55,4 +53,4 @@ Std_ReturnType DIO_Error_State_tSetPortValue     (u8 copy_u8portId, u8 copy_u8po
 Std_ReturnType DIO_Error_State_tGetPortValue     (u8 copy_u8portId, u8 *copy_u8returnedportValue);
 
 
-#endif
+#endif /**< __DIO_INTERFACE_H_ */
