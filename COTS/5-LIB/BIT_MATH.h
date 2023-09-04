@@ -1,11 +1,18 @@
-#ifndef BIT_MATH_H
-#define BIT_MATH_H
+/**************************************************************************/
+/************** Author   : Mahmoud Abdelraouf Mahmoud   *******************/
+/************** Date	 : 4 Sep 2023                   *******************/
+/************** Version  : V01                          *******************/
+/************** Module   : BIT_MATH.h                   *******************/
+/**************************************************************************/
+#ifndef __BIT_MATH_H__
+#define __BIT_MATH_H__
 
-#define SET_BIT(REG,BIT_NUMBER) REG|=(1<< BIT_NUMBER)
-#define CLR_BIT(REG,BIT_NUMBER) REG&=~(1<< BIT_NUMBER)
-#define TOG_BIT(REG,BIT_NUMBER) REG^=(1<< BIT_NUMBER)
-#define GET_BIT(REG,BIT_NUMBER) ((REG & (1<< BIT_NUMBER))>>BIT_NUMBER)
+#define SET_BIT(REG, BIT_NUMBER) 	REG |= (1<< BIT_NUMBER)
+#define CLR_BIT(REG, BIT_NUMBER) 	REG &= ~(1<< BIT_NUMBER)
+#define TOG_BIT(REG, BIT_NUMBER) 	REG ^= (1<< BIT_NUMBER)
+#define GET_BIT(REG, BIT_NUMBER) 	((REG & (1<< BIT_NUMBER)) >> BIT_NUMBER)
 
 
 
-#endif
+#endif /**< __BIT_MATH_H__ */
+

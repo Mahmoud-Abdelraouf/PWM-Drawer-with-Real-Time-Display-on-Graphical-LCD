@@ -50,9 +50,10 @@ void DIO_voidInit(void)
 /****************************************************************/
 /****************************************************************/
 /****************************************************************/
-Error_State_t DIO_Error_State_tSetPinDirection(u8 copy_u8portId, u8 copy_u8pinId,u8 copy_u8pinDirection)
+Std_ReturnType DIO_Error_State_tSetPinDirection(u8 copy_u8portId, u8 copy_u8pinId,u8 copy_u8pinDirection)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
+	Std_ReturnType L_enumFunctionState = E_OK;
+
 	if((copy_u8portId <= DIO_u8_PORTD) && (copy_u8pinId<=DIO_u8_PIN7) && ((copy_u8pinDirection==DIO_u8_OUTPUT) || (copy_u8pinDirection==DIO_u8_INPUT)))
 	{
 		switch (copy_u8portId)
@@ -89,7 +90,7 @@ Error_State_t DIO_Error_State_tSetPinDirection(u8 copy_u8portId, u8 copy_u8pinId
 	}
 	else
 	{
-		L_enumFunctionState = RET_NOK;
+		L_enumFunctionState = E_NOT_OK;
 	}
 	return L_enumFunctionState;
 	

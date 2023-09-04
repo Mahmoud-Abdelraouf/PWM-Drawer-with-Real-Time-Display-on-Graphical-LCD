@@ -42,17 +42,17 @@
 
 void DIO_voidInit(void);
 
-Error_State_t DIO_Error_State_tSetPinDirection  (u8 copy_u8portId, u8 copy_u8pinId,u8 copy_u8pinDirection);
+Std_ReturnType DIO_Error_State_tSetPinDirection  (u8 copy_u8portId, u8 copy_u8pinId,u8 copy_u8pinDirection);
 
-Error_State_t DIO_Error_State_tSetPinValue      (u8 copy_u8portId, u8 copy_u8pinId,u8 copy_u8pinValue);
+Std_ReturnType DIO_Error_State_tSetPinValue      (u8 copy_u8portId, u8 copy_u8pinId,u8 copy_u8pinValue);
 
-Error_State_t DIO_Error_State_tGetPinValue      (u8 copy_u8portId, u8 copy_u8pinId,u8 *copy_u8returnedPinValue);
+Std_ReturnType DIO_Error_State_tGetPinValue      (u8 copy_u8portId, u8 copy_u8pinId,u8 *copy_u8returnedPinValue);
 
-Error_State_t DIO_Error_State_tSetPortDirection (u8 copy_u8portId, u8 copy_u8portDirection);
+Std_ReturnType DIO_Error_State_tSetPortDirection (u8 copy_u8portId, u8 copy_u8portDirection);
 
-Error_State_t DIO_Error_State_tSetPortValue     (u8 copy_u8portId, u8 copy_u8portValue);
+Std_ReturnType DIO_Error_State_tSetPortValue     (u8 copy_u8portId, u8 copy_u8portValue);
 
-Error_State_t DIO_Error_State_tGetPortValue     (u8 copy_u8portId, u8 *copy_u8returnedportValue);
+Std_ReturnType DIO_Error_State_tGetPortValue     (u8 copy_u8portId, u8 *copy_u8returnedportValue);
 
 
 #endif

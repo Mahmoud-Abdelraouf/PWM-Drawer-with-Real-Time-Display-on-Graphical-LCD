@@ -1,9 +1,12 @@
-#ifndef STD_TYPES_H
-#define STD_TYPES_H
+/**************************************************************************/
+/************** Author   : Mahmoud Abdelraouf Mahmoud   *******************/
+/************** Date	 : 4 Sep 2023                   *******************/
+/************** Version  : 0.1                          *******************/
+/************** Module   : STD_TYPES.h                  *******************/
+/**************************************************************************/
+#ifndef __STD_TYPES_H__
+#define __STD_TYPES_H__
 
-#define NULL				((void *)0)
-#define STD_TYPES_OK		1
-#define STD_TYPES_NOK		0
 
 typedef unsigned char		u8;
 typedef unsigned short  	u16;
@@ -19,5 +22,14 @@ typedef float  				f32;
 typedef double 				f64;
 typedef long double  		f96;
 
+typedef u8                  Std_ReturnType;
 
-#endif /*the end of STD_TYPES_H */
+
+
+#define NULL				((void *)0)
+
+#define E_OK                (Std_ReturnType)1
+#define E_NOT_OK            (Std_ReturnType)0
+
+
+#endif /**< __STD_TYPES_H__ */
