@@ -4,8 +4,8 @@
 /************** Version  : 0.1                          *******************/
 /************** Module   : STD_TYPES.h                  *******************/
 /**************************************************************************/
-#ifndef __STD_TYPES_H__
-#define __STD_TYPES_H__
+#ifndef __STD_TYPES_H_
+#define __STD_TYPES_H_
 
 
 typedef unsigned char		u8;
@@ -32,4 +32,4 @@ typedef u8                  Std_ReturnType;
 #define E_NOT_OK            (Std_ReturnType)0
 
 
-#endif /**< __STD_TYPES_H__ */
+#endif /**< __STD_TYPES_H_ */

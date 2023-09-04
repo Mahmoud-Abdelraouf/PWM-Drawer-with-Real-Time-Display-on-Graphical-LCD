@@ -1,100 +1,114 @@
-/********************************************************/
-/********** Name    : Mahmoud a raoof mahmoud ***********/
-/********** Date    : 18/09/2022              ***********/
-/********** SWC     : DIO                     ***********/
-/********** Version : 1.0                     ***********/
-/********************************************************/
-#ifndef DIO_CONFIG_H
-#define DIO_CONFIG_H
+/**************************************************************************/
+/************** Name    : Mahmoud A Raouf Mahmoud *************************/
+/************** Date    : 18/09/2022              *************************/
+/************** SWC     : DIO                     *************************/
+/************** Version : 0.2                     *************************/
+/**************************************************************************/
+#ifndef __DIO_CONFIG_H_
+#define __DIO_CONFIG_H_
 
-/*Initial Direction for All Pins*/
-/*options : DIO_u8_INITIAL_OUTPUT
-          : DIO_u8_INITIAL_INPUT*/
-/***************************************PORTA***************************************/                                           
-#define DIO_u8_PA0_INITIAL_DIRECTION				DIO_u8_INITIAL_INPUT			
-#define DIO_u8_PA1_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PA2_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PA3_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PA4_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PA5_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PA6_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PA7_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-/***************************************PORTB***************************************/                                           
-#define DIO_u8_PB0_INITIAL_DIRECTION				DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PB1_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PB2_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PB3_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PB4_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PB5_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PB6_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PB7_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-/***************************************PORTC***************************************/                                           
-#define DIO_u8_PC0_INITIAL_DIRECTION				DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PC1_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PC2_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PC3_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PC4_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PC5_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PC6_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PC7_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-/***************************************PORTD***************************************/                                           
-#define DIO_u8_PD0_INITIAL_DIRECTION				DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PD1_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PD2_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PD3_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PD4_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PD5_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PD6_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-#define DIO_u8_PD7_INITIAL_DIRECTION                DIO_u8_INITIAL_OUTPUT
-/***************************End_PORT_Initial_Direction******************************/   
-                                        
-/*Initial Values for All Pins*/
-/*options : DIO_u8_OUTPUT_LOW
-          : DIO_u8_OUTPUT_HIGH
-		  : DIO_u8_FLOATING
-		  : DIO_u8_PULL_UP*/
-/***************************************PORTA***************************************/                                           
-#define DIO_u8_PA0_INITIAL_VALUE    				DIO_u8_OUTPUT_LOW			
-#define DIO_u8_PA1_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PA2_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PA3_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PA4_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PA5_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PA6_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PA7_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-/***************************************PORTB***************************************/                                           
-#define DIO_u8_PB0_INITIAL_VALUE    				DIO_u8_OUTPUT_LOW 
-#define DIO_u8_PB1_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PB2_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PB3_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PB4_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PB5_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PB6_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PB7_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-/***************************************PORTC***************************************/                                           
-#define DIO_u8_PC0_INITIAL_VALUE    				DIO_u8_OUTPUT_LOW
-#define DIO_u8_PC1_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PC2_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PC3_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PC4_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PC5_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PC6_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PC7_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-/***************************************PORTD***************************************/                                           
-#define DIO_u8_PD0_INITIAL_VALUE    				DIO_u8_OUTPUT_LOW
-#define DIO_u8_PD1_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PD2_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PD3_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PD4_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PD5_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PD6_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-#define DIO_u8_PD7_INITIAL_VALUE                    DIO_u8_OUTPUT_LOW
-/******************************End_PORT_Initial_Value*******************************/   
+/**
+ * @brief Initial Direction Options for All Pins
+ *
+ * The following macros define the initial direction settings for each pin on the specified ports.
+ * You can choose one of the following options for a pin's initial direction:
+ *
+ * - DIO_INITIAL_OUTPUT: Set the pin as an output.
+ * - DIO_INITIAL_INPUT : Set the pin as an input.
+ */
+ 
+/**< Port A */
+#define DIO_PA0_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PA1_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PA2_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PA3_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PA4_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PA5_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PA6_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PA7_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+
+/**< Port B */
+#define DIO_PB0_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PB1_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PB2_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PB3_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PB4_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PB5_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PB6_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PB7_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+
+/**< Port C */
+#define DIO_PC0_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PC1_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PC2_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PC3_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PC4_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PC5_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PC6_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PC7_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+
+/**< Port D */
+#define DIO_PD0_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PD1_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PD2_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PD3_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PD4_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PD5_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PD6_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+#define DIO_PD7_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
+  
+ /**
+ * @brief Initial Value Options for All Pins
+ *
+ * The following macros define the initial value settings for each pin on the specified ports.
+ * You can choose one of the following options for a pin's initial value:
+ *
+ * - DIO_OUTPUT_LOW : Set the pin's initial value to low (logic 0).
+ * - DIO_OUTPUT_HIGH: Set the pin's initial value to high (logic 1).
+ * - DIO_FLOATING   : Set the pin as floating (for input pins).
+ * - DIO_PULL_UP    : Set the pin with an internal pull-up resistor (for input pins).
+ */
+ 
+/**< Port A */
+#define DIO_PA0_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PA1_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PA2_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PA3_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PA4_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PA5_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PA6_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PA7_INITIAL_VALUE   DIO_OUTPUT_LOW
+
+/**< Port B */
+#define DIO_PB0_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PB1_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PB2_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PB3_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PB4_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PB5_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PB6_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PB7_INITIAL_VALUE   DIO_OUTPUT_LOW
+
+/**< Port C */
+#define DIO_PC0_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PC1_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PC2_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PC3_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PC4_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PC5_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PC6_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PC7_INITIAL_VALUE   DIO_OUTPUT_LOW
+
+/**< Port D */
+#define DIO_PD0_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PD1_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PD2_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PD3_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PD4_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PD5_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PD6_INITIAL_VALUE   DIO_OUTPUT_LOW
+#define DIO_PD7_INITIAL_VALUE   DIO_OUTPUT_LOW  
 
 
 
-
-
-
-
-#endif
+#endif /**< __DIO_CONFIG_H_ */

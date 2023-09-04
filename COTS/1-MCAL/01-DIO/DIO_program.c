@@ -1,308 +1,296 @@
-/********************************************************/
-/********** Name    : Mahmoud a raoof mahmoud ***********/
-/********** Date    : 18/09/2022              ***********/
-/********** SWC     : DIO                     ***********/
-/********** Version : 1.0                     ***********/
-/********************************************************/
+/**************************************************************************/
+/************** Name    : Mahmoud A Raouf Mahmoud *************************/
+/************** Date    : 18/09/2022              *************************/
+/************** SWC     : DIO                     *************************/
+/************** Version : 0.2                     *************************/
+/**************************************************************************/
 
-/*lib layer*/
+/**<  LIB */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-/*MCAL*/
+/**<  MCAL */
 #include "DIO_interface.h"
 #include "DIO_private.h"
 #include "DIO_config.h"
 
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
+
 void DIO_voidInit(void)
 {
-/****************************************************************************************************************************************************/
-	DIO_u8_DDRA_REG = Conc(DIO_u8_PA7_INITIAL_DIRECTION,DIO_u8_PA6_INITIAL_DIRECTION,DIO_u8_PA5_INITIAL_DIRECTION,DIO_u8_PA4_INITIAL_DIRECTION,
-						   DIO_u8_PA3_INITIAL_DIRECTION,DIO_u8_PA2_INITIAL_DIRECTION,DIO_u8_PA1_INITIAL_DIRECTION,DIO_u8_PA0_INITIAL_DIRECTION);
-						   
-	DIO_u8_DDRB_REG = Conc(DIO_u8_PB7_INITIAL_DIRECTION,DIO_u8_PB6_INITIAL_DIRECTION,DIO_u8_PB5_INITIAL_DIRECTION,DIO_u8_PB4_INITIAL_DIRECTION,
-						   DIO_u8_PB3_INITIAL_DIRECTION,DIO_u8_PB2_INITIAL_DIRECTION,DIO_u8_PB1_INITIAL_DIRECTION,DIO_u8_PB0_INITIAL_DIRECTION);
-						   
-	DIO_u8_DDRC_REG = Conc(DIO_u8_PC7_INITIAL_DIRECTION,DIO_u8_PC6_INITIAL_DIRECTION,DIO_u8_PC5_INITIAL_DIRECTION,DIO_u8_PC4_INITIAL_DIRECTION,
-						   DIO_u8_PC3_INITIAL_DIRECTION,DIO_u8_PC2_INITIAL_DIRECTION,DIO_u8_PC1_INITIAL_DIRECTION,DIO_u8_PC0_INITIAL_DIRECTION);
-						   
-	DIO_u8_DDRD_REG = Conc(DIO_u8_PD7_INITIAL_DIRECTION,DIO_u8_PD6_INITIAL_DIRECTION,DIO_u8_PD5_INITIAL_DIRECTION,DIO_u8_PD4_INITIAL_DIRECTION,
-						   DIO_u8_PD3_INITIAL_DIRECTION,DIO_u8_PD2_INITIAL_DIRECTION,DIO_u8_PD1_INITIAL_DIRECTION,DIO_u8_PD0_INITIAL_DIRECTION);
-/****************************************************************************************************************************************************/	   
-	DIO_u8_PORTA_REG = Conc(DIO_u8_PA7_INITIAL_VALUE,DIO_u8_PA6_INITIAL_VALUE,DIO_u8_PA5_INITIAL_VALUE,DIO_u8_PA4_INITIAL_VALUE,
-						   DIO_u8_PA3_INITIAL_VALUE,DIO_u8_PA2_INITIAL_VALUE,DIO_u8_PA1_INITIAL_VALUE,DIO_u8_PA0_INITIAL_VALUE);
-						   
-	DIO_u8_PORTB_REG = Conc(DIO_u8_PB7_INITIAL_VALUE,DIO_u8_PB6_INITIAL_VALUE,DIO_u8_PB5_INITIAL_VALUE,DIO_u8_PB4_INITIAL_VALUE,
-						   DIO_u8_PB3_INITIAL_VALUE,DIO_u8_PB2_INITIAL_VALUE,DIO_u8_PB1_INITIAL_VALUE,DIO_u8_PB0_INITIAL_VALUE);
-						   
-	DIO_u8_PORTC_REG = Conc(DIO_u8_PC7_INITIAL_VALUE,DIO_u8_PC6_INITIAL_VALUE,DIO_u8_PC5_INITIAL_VALUE,DIO_u8_PC4_INITIAL_VALUE,
-						   DIO_u8_PC3_INITIAL_VALUE,DIO_u8_PC2_INITIAL_VALUE,DIO_u8_PC1_INITIAL_VALUE,DIO_u8_PC0_INITIAL_VALUE);
-						   
-	DIO_u8_PORTD_REG = Conc(DIO_u8_PD7_INITIAL_VALUE,DIO_u8_PD6_INITIAL_VALUE,DIO_u8_PD5_INITIAL_VALUE,DIO_u8_PD4_INITIAL_VALUE,
-						   DIO_u8_PD3_INITIAL_VALUE,DIO_u8_PD2_INITIAL_VALUE,DIO_u8_PD1_INITIAL_VALUE,DIO_u8_PD0_INITIAL_VALUE);
+	/**< Configure the data direction registers (DDRx) */ 
+    DIO_DDRA_R = Conc(DIO_PA7_INITIAL_DIRECTION, DIO_PA6_INITIAL_DIRECTION, DIO_PA5_INITIAL_DIRECTION, DIO_PA4_INITIAL_DIRECTION,
+                      DIO_PA3_INITIAL_DIRECTION, DIO_PA2_INITIAL_DIRECTION, DIO_PA1_INITIAL_DIRECTION, DIO_PA0_INITIAL_DIRECTION);
+
+    DIO_DDRB_R = Conc(DIO_PB7_INITIAL_DIRECTION, DIO_PB6_INITIAL_DIRECTION, DIO_PB5_INITIAL_DIRECTION, DIO_PB4_INITIAL_DIRECTION,
+                      DIO_PB3_INITIAL_DIRECTION, DIO_PB2_INITIAL_DIRECTION, DIO_PB1_INITIAL_DIRECTION, DIO_PB0_INITIAL_DIRECTION);
+
+    DIO_DDRC_R = Conc(DIO_PC7_INITIAL_DIRECTION, DIO_PC6_INITIAL_DIRECTION, DIO_PC5_INITIAL_DIRECTION, DIO_PC4_INITIAL_DIRECTION,
+                      DIO_PC3_INITIAL_DIRECTION, DIO_PC2_INITIAL_DIRECTION, DIO_PC1_INITIAL_DIRECTION, DIO_PC0_INITIAL_DIRECTION);
+
+    DIO_DDRD_R = Conc(DIO_PD7_INITIAL_DIRECTION, DIO_PD6_INITIAL_DIRECTION, DIO_PD5_INITIAL_DIRECTION, DIO_PD4_INITIAL_DIRECTION,
+                      DIO_PD3_INITIAL_DIRECTION, DIO_PD2_INITIAL_DIRECTION, DIO_PD1_INITIAL_DIRECTION, DIO_PD0_INITIAL_DIRECTION);
+    
+    /**< Set the initial output values for the ports */
+    DIO_PORTA_R = Conc(DIO_PA7_INITIAL_VALUE, DIO_PA6_INITIAL_VALUE, DIO_PA5_INITIAL_VALUE, DIO_PA4_INITIAL_VALUE,
+                       DIO_PA3_INITIAL_VALUE, DIO_PA2_INITIAL_VALUE, DIO_PA1_INITIAL_VALUE, DIO_PA0_INITIAL_VALUE);
+
+    DIO_PORTB_R = Conc(DIO_PB7_INITIAL_VALUE, DIO_PB6_INITIAL_VALUE, DIO_PB5_INITIAL_VALUE, DIO_PB4_INITIAL_VALUE,
+                       DIO_PB3_INITIAL_VALUE, DIO_PB2_INITIAL_VALUE, DIO_PB1_INITIAL_VALUE, DIO_PB0_INITIAL_VALUE);
+
+    DIO_PORTC_R = Conc(DIO_PC7_INITIAL_VALUE, DIO_PC6_INITIAL_VALUE, DIO_PC5_INITIAL_VALUE, DIO_PC4_INITIAL_VALUE,
+                       DIO_PC3_INITIAL_VALUE, DIO_PC2_INITIAL_VALUE, DIO_PC1_INITIAL_VALUE, DIO_PC0_INITIAL_VALUE);
+
+    DIO_PORTD_R = Conc(DIO_PD7_INITIAL_VALUE, DIO_PD6_INITIAL_VALUE, DIO_PD5_INITIAL_VALUE, DIO_PD4_INITIAL_VALUE,
+                       DIO_PD3_INITIAL_VALUE, DIO_PD2_INITIAL_VALUE, DIO_PD1_INITIAL_VALUE, DIO_PD0_INITIAL_VALUE);
+    
 }
 
 
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-Std_ReturnType DIO_Error_State_tSetPinDirection(u8 copy_u8portId, u8 copy_u8pinId,u8 copy_u8pinDirection)
+Std_ReturnType DIO_SetPinDirection(u8 Copy_PortId, u8 Copy_PinId,u8 Copy_PinDirection)
 {
-	Std_ReturnType L_enumFunctionState = E_OK;
+	Std_ReturnType Local_FunctionStatus = E_OK;
 
-	if((copy_u8portId <= DIO_u8_PORTD) && (copy_u8pinId<=DIO_u8_PIN7) && ((copy_u8pinDirection==DIO_u8_OUTPUT) || (copy_u8pinDirection==DIO_u8_INPUT)))
+	if(((Copy_PortId < 4) && (Copy_PinId < 8)) && ((Copy_PinDirection == DIO_OUTPUT) || (Copy_PinDirection == DIO_INPUT)))
 	{
-		switch (copy_u8portId)
+		switch (Copy_PortId)
 		{
-			case DIO_u8_PORTA:
-				switch (copy_u8pinDirection)
+			case DIO_PORTA:
+				switch (Copy_PinDirection)
 				{
-					case DIO_u8_OUTPUT:SET_BIT(DIO_u8_DDRA_REG,copy_u8pinId);break;
-					case DIO_u8_INPUT :CLR_BIT(DIO_u8_DDRA_REG,copy_u8pinId);break;
+					case DIO_OUTPUT: SET_BIT(DIO_DDRA_R, Copy_PinId);break;
+					case DIO_INPUT : CLR_BIT(DIO_DDRA_R, Copy_PinId);break;
+					default : Local_FunctionStatus = E_NOT_OK;
 				}
-			break;
-			case DIO_u8_PORTB:
-				switch (copy_u8pinDirection)
+				break;
+			case DIO_PORTB:
+				switch (Copy_PinDirection)
 				{
-					case DIO_u8_OUTPUT:SET_BIT(DIO_u8_DDRB_REG,copy_u8pinId);break;
-					case DIO_u8_INPUT :CLR_BIT(DIO_u8_DDRB_REG,copy_u8pinId);break;
+					case DIO_OUTPUT:SET_BIT(DIO_DDRB_R, Copy_PinId);break;
+					case DIO_INPUT :CLR_BIT(DIO_DDRB_R, Copy_PinId);break;
+					default : Local_FunctionStatus = E_NOT_OK;
 				}
-			break;
-			case DIO_u8_PORTC:
-				switch (copy_u8pinDirection)
+				break;
+			case DIO_PORTC:
+				switch (Copy_PinDirection)
 				{
-					case DIO_u8_OUTPUT:SET_BIT(DIO_u8_DDRC_REG,copy_u8pinId);break;
-					case DIO_u8_INPUT :CLR_BIT(DIO_u8_DDRC_REG,copy_u8pinId);break;
+					case DIO_OUTPUT:SET_BIT(DIO_DDRC_R, Copy_PinId);break;
+					case DIO_INPUT :CLR_BIT(DIO_DDRC_R, Copy_PinId);break;
+					Local_FunctionStatus = E_NOT_OK;
 				}
-			break;
-			case DIO_u8_PORTD:
-				switch (copy_u8pinDirection)
+				break;
+			case DIO_PORTD:
+				switch (Copy_PinDirection)
 				{
-					case DIO_u8_OUTPUT:SET_BIT(DIO_u8_DDRD_REG,copy_u8pinId);break;
-					case DIO_u8_INPUT :CLR_BIT(DIO_u8_DDRD_REG,copy_u8pinId);break;
+					case DIO_OUTPUT:SET_BIT(DIO_DDRD_R, Copy_PinId);break;
+					case DIO_INPUT :CLR_BIT(DIO_DDRD_R, Copy_PinId);break;
+					Local_FunctionStatus = E_NOT_OK;
 				}
-			break;
+				break;
 		}
 	}
 	else
 	{
-		L_enumFunctionState = E_NOT_OK;
+		Local_FunctionStatus = E_NOT_OK;
 	}
-	return L_enumFunctionState;
+	return Local_FunctionStatus;
 	
 }
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-Error_State_t DIO_Error_State_tSetPinValue(u8 copy_u8portId, u8 copy_u8pinId,u8 copy_u8pinValue)
+
+Std_ReturnType DIO_SetPinValue(u8 Copy_PortId, u8 Copy_PinId,u8 Copy_PinValue)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
-	if(copy_u8pinId<=DIO_u8_PIN7)
+	Std_ReturnType Local_FunctionStatus = E_OK;
+
+	if(Copy_PinId < 8)
 	{
-		switch (copy_u8portId)
+		switch (Copy_PortId)
 		{
-			case DIO_u8_PORTA:
-				switch(copy_u8pinValue)
+			case DIO_PORTA:
+				switch(Copy_PinValue)
 				{	
-					case DIO_u8_HIGH: SET_BIT(DIO_u8_PORTA_REG,copy_u8pinId);break;
-					case DIO_u8_LOW : CLR_BIT(DIO_u8_PORTA_REG,copy_u8pinId);break;
-					default: L_enumFunctionState = RET_NOK;
+					case DIO_HIGH: SET_BIT(DIO_PORTA_R, Copy_PinId);break;
+					case DIO_LOW : CLR_BIT(DIO_PORTA_R, Copy_PinId);break;
+					default: Local_FunctionStatus = E_NOT_OK;
 				}
-			break;
-			case DIO_u8_PORTB:
-				switch(copy_u8pinValue)
+				break;
+			case DIO_PORTB:
+				switch(Copy_PinValue)
 				{
-					case DIO_u8_HIGH: SET_BIT(DIO_u8_PORTB_REG,copy_u8pinId);break;
-					case DIO_u8_LOW : CLR_BIT(DIO_u8_PORTB_REG,copy_u8pinId);break;
-					default: L_enumFunctionState = RET_NOK;
+					case DIO_HIGH: SET_BIT(DIO_PORTB_R, Copy_PinId);break;
+					case DIO_LOW : CLR_BIT(DIO_PORTB_R, Copy_PinId);break;
+					default: Local_FunctionStatus = E_NOT_OK;
 				}
-			break;
-			case DIO_u8_PORTC:
-				switch(copy_u8pinValue)
+				break;
+			case DIO_PORTC:
+				switch(Copy_PinValue)
 				{
-					case DIO_u8_HIGH: SET_BIT(DIO_u8_PORTC_REG,copy_u8pinId);break;
-					case DIO_u8_LOW : CLR_BIT(DIO_u8_PORTC_REG,copy_u8pinId);break;
-					default: L_enumFunctionState = RET_NOK;
+					case DIO_HIGH: SET_BIT(DIO_PORTC_R, Copy_PinId);break;
+					case DIO_LOW : CLR_BIT(DIO_PORTC_R, Copy_PinId);break;
+					default: Local_FunctionStatus = E_NOT_OK;
 				}
-			break;
-			case DIO_u8_PORTD:
-				switch(copy_u8pinValue)
+				break;
+			case DIO_PORTD:
+				switch(Copy_PinValue)
 				{
-					case DIO_u8_HIGH: SET_BIT(DIO_u8_PORTD_REG,copy_u8pinId);break;
-					case DIO_u8_LOW : CLR_BIT(DIO_u8_PORTD_REG,copy_u8pinId);break;
-					default: L_enumFunctionState = RET_NOK;
+					case DIO_HIGH: SET_BIT(DIO_PORTD_R, Copy_PinId);break;
+					case DIO_LOW : CLR_BIT(DIO_PORTD_R, Copy_PinId);break;
+					default: Local_FunctionStatus = E_NOT_OK;
 				}
-			break;
+				break;
 			default:
-			L_enumFunctionState = RET_NOK;
-			break;
+				Local_FunctionStatus = E_NOT_OK;
+				break;
 		}
 	}
 	else
 	{
-		L_enumFunctionState = RET_NOK;
+		Local_FunctionStatus = E_NOT_OK;
 	}
-	return L_enumFunctionState;
+	return Local_FunctionStatus;
 }
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-Error_State_t DIO_Error_State_tGetPinValue(u8 copy_u8portId, u8 copy_u8pinId,u8 *copy_u8returnedPinValue)
+
+Std_ReturnType DIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId,u8 *Copy_ReturnedPinValue)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
-	if((copy_u8pinId<=DIO_u8_PIN7) && (NULL!=copy_u8returnedPinValue))
+	Std_ReturnType Local_FunctionStatus = E_OK;
+
+	if((Copy_PortId < 8) && (NULL != Copy_ReturnedPinValue))
 	{
-		switch (copy_u8portId)
+		switch (Copy_PortId)
 		{
-			case DIO_u8_PORTA:*copy_u8returnedPinValue = GET_BIT(DIO_u8_PINA_REG,copy_u8pinId);
-			if(*copy_u8returnedPinValue==0)
+			case DIO_PORTA: *Copy_ReturnedPinValue = GET_BIT(DIO_PINA_R, Copy_PinId);
+				if(*Copy_ReturnedPinValue == 0)
+				{
+					*Copy_ReturnedPinValue = DIO_LOW;
+				}
+				else
+				{
+					*Copy_ReturnedPinValue = DIO_HIGH;
+				}
+				break;
+			case DIO_PORTB: *Copy_ReturnedPinValue = GET_BIT(DIO_PINB_R, Copy_PinId);
+				if(*Copy_ReturnedPinValue==0)
+				{
+					*Copy_ReturnedPinValue = DIO_LOW;
+				}
+				else
+				{
+					*Copy_ReturnedPinValue = DIO_HIGH;
+				}
+				break;
+			case DIO_PORTC: *Copy_ReturnedPinValue = GET_BIT(DIO_PINC_R, Copy_PinId);
+				if(*Copy_ReturnedPinValue==0)
+				{
+					*Copy_ReturnedPinValue = DIO_LOW;
+				}
+				else
+				{
+					*Copy_ReturnedPinValue = DIO_HIGH;
+				}
+				break;
+			case DIO_PORTD: *Copy_ReturnedPinValue = GET_BIT(DIO_PIND_R, Copy_PinId);
+			if(*Copy_ReturnedPinValue==0)
 			{
-				*copy_u8returnedPinValue = DIO_u8_LOW;
+				*Copy_ReturnedPinValue = DIO_LOW;
 			}
 			else
 			{
-				*copy_u8returnedPinValue = DIO_u8_HIGH;
-			}
-			break;
-			case DIO_u8_PORTB:*copy_u8returnedPinValue = GET_BIT(DIO_u8_PINB_REG,copy_u8pinId);
-			if(*copy_u8returnedPinValue==0)
-			{
-				*copy_u8returnedPinValue = DIO_u8_LOW;
-			}
-			else
-			{
-				*copy_u8returnedPinValue = DIO_u8_HIGH;
-			}
-			break;
-			case DIO_u8_PORTC:*copy_u8returnedPinValue = GET_BIT(DIO_u8_PINC_REG,copy_u8pinId);
-			if(*copy_u8returnedPinValue==0)
-			{
-				*copy_u8returnedPinValue = DIO_u8_LOW;
-			}
-			else
-			{
-				*copy_u8returnedPinValue = DIO_u8_HIGH;
-			}
-			break;
-			case DIO_u8_PORTD:*copy_u8returnedPinValue = GET_BIT(DIO_u8_PIND_REG,copy_u8pinId);
-			if(*copy_u8returnedPinValue==0)
-			{
-				*copy_u8returnedPinValue = DIO_u8_LOW;
-			}
-			else
-			{
-				*copy_u8returnedPinValue = DIO_u8_HIGH;
+				*Copy_ReturnedPinValue = DIO_HIGH;
 			}
 			break;
 			default:
-			L_enumFunctionState = RET_NOK;
-			break;
+				Local_FunctionStatus = E_NOT_OK;
+				break;
 		}
 	}
 	else
 	{
-		L_enumFunctionState  =RET_NOK;
+		Local_FunctionStatus  =E_NOT_OK;
 	}
-	return L_enumFunctionState;
+	return Local_FunctionStatus;
 }
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-Error_State_t DIO_Error_State_tSetPortDirection(u8 copy_u8portId, u8 copy_u8portDirection)
+
+Std_ReturnType DIO_SetPortDirection(u8 Copy_PortId, u8 Copy_PortDirection)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
-	if(copy_u8portDirection==DIO_u8_OUTPUT||copy_u8portDirection==DIO_u8_INPUT)
+	Std_ReturnType Local_FunctionStatus = E_OK;
+
+	if(Copy_PortDirection == DIO_OUTPUT || Copy_PortDirection == DIO_INPUT)
 	{
-		switch(copy_u8portId)
+		switch(Copy_PortId)
 		{
-			case DIO_u8_PORTA:
-				switch(copy_u8portDirection)
+			case DIO_PORTA:
+				switch(Copy_PortDirection)
 				{
-					case DIO_u8_OUTPUT:DIO_u8_DDRA_REG = 0XFF;break;
-					case DIO_u8_INPUT :DIO_u8_DDRA_REG = 0X00;break;
-					default: L_enumFunctionState = RET_NOK;break;
+					case DIO_OUTPUT:DIO_DDRA_R = 0XFF; break;
+					case DIO_INPUT :DIO_DDRA_R = 0X00; break;
+					default: Local_FunctionStatus = E_NOT_OK; break;
 				}
-			break;
-			case DIO_u8_PORTB:
-				switch(copy_u8portDirection)
+				break;
+			case DIO_PORTB:
+				switch(Copy_PortDirection)
 				{
-					case DIO_u8_OUTPUT:DIO_u8_DDRB_REG = 0XFF;break;
-					case DIO_u8_INPUT :DIO_u8_DDRB_REG = 0X00;break;
-					default: L_enumFunctionState = RET_NOK;break;
+					case DIO_OUTPUT:DIO_DDRB_R = 0XFF; break;
+					case DIO_INPUT :DIO_DDRB_R = 0X00; break;
+					default: Local_FunctionStatus = E_NOT_OK; break;
 				}
-			break;
-			case DIO_u8_PORTC:
-				switch(copy_u8portDirection)
+				break;
+			case DIO_PORTC:
+				switch(Copy_PortDirection)
 				{
-					case DIO_u8_OUTPUT:DIO_u8_DDRC_REG = 0XFF;break;
-					case DIO_u8_INPUT :DIO_u8_DDRC_REG = 0X00;break;
-					default: L_enumFunctionState = RET_NOK;break;
+					case DIO_OUTPUT:DIO_DDRC_R = 0XFF; break;
+					case DIO_INPUT :DIO_DDRC_R = 0X00; break;
+					default: Local_FunctionStatus = E_NOT_OK; break;
 				}
-			break;
-			case DIO_u8_PORTD:
-				switch(copy_u8portDirection)
+				break;
+			case DIO_PORTD:
+				switch(Copy_PortDirection)
 				{
-					case DIO_u8_OUTPUT:DIO_u8_DDRD_REG = 0XFF;break;
-					case DIO_u8_INPUT :DIO_u8_DDRD_REG = 0X00;break;
-					default: L_enumFunctionState = RET_NOK;break;
+					case DIO_OUTPUT:DIO_DDRD_R = 0XFF; break;
+					case DIO_INPUT :DIO_DDRD_R = 0X00; break;
+					default: Local_FunctionStatus = E_NOT_OK; break;
 				}
-			break;
-			default: L_enumFunctionState = RET_NOK;
+				break;
+			default: Local_FunctionStatus = E_NOT_OK; break;
 		}
 	}
 	else
 	{
-		L_enumFunctionState = RET_NOK;
+		Local_FunctionStatus = E_NOT_OK;
 	}
-	return L_enumFunctionState;
+	return Local_FunctionStatus;
 }
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-Error_State_t DIO_Error_State_tSetPortValue(u8 copy_u8portId, u8 copy_u8portValue)
+
+Std_ReturnType DIO_SetPortValue(u8 Copy_PortId, u8 Copy_PortValue)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
-	switch(copy_u8portId)
+	Std_ReturnType Local_FunctionStatus = E_OK;
+	switch(Copy_PortId)
 	{
-		case DIO_u8_PORTA: DIO_u8_PORTA_REG = copy_u8portValue;break;
-		case DIO_u8_PORTB: DIO_u8_PORTB_REG = copy_u8portValue;break;
-		case DIO_u8_PORTC: DIO_u8_PORTC_REG = copy_u8portValue;break;
-		case DIO_u8_PORTD: DIO_u8_PORTD_REG = copy_u8portValue;break;
-		default: L_enumFunctionState = RET_NOK;break;
+		case DIO_PORTA: DIO_PORTA_R = Copy_PortValue; break;
+		case DIO_PORTB: DIO_PORTB_R = Copy_PortValue; break;
+		case DIO_PORTC: DIO_PORTC_R = Copy_PortValue; break;
+		case DIO_PORTD: DIO_PORTD_R = Copy_PortValue; break;
+		default: Local_FunctionStatus = E_NOT_OK; break;
 	}
-	return L_enumFunctionState;
+	return Local_FunctionStatus;
 }
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-/****************************************************************/
-Error_State_t DIO_Error_State_tGetPortValue(u8 copy_u8portId, u8 *copy_u8returnedportValue)
+
+Std_ReturnType DIO_GetPortValue(u8 Copy_u8portId, u8 *Copy_ReturnedPortValue)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
-	if(NULL!=copy_u8returnedportValue)
+	Std_ReturnType Local_FunctionStatus = E_OK;
+
+	if(NULL != Copy_ReturnedPortValue)
 	{
-		switch(copy_u8portId)
+		switch(Copy_u8portId)
 		{
-			case DIO_u8_PORTA: *copy_u8returnedportValue = DIO_u8_PINA_REG;break;
-			case DIO_u8_PORTB: *copy_u8returnedportValue = DIO_u8_PINB_REG;break;
-			case DIO_u8_PORTC: *copy_u8returnedportValue = DIO_u8_PINC_REG;break;
-			case DIO_u8_PORTD: *copy_u8returnedportValue = DIO_u8_PIND_REG;break;
-			default: L_enumFunctionState = RET_NOK;
+			case DIO_PORTA: *Copy_ReturnedPortValue = DIO_PINA_R; break;
+			case DIO_PORTB: *Copy_ReturnedPortValue = DIO_PINB_R; break;
+			case DIO_PORTC: *Copy_ReturnedPortValue = DIO_PINC_R; break;
+			case DIO_PORTD: *Copy_ReturnedPortValue = DIO_PIND_R; break;
+			default: Local_FunctionStatus = E_NOT_OK;
 		}
 	}
 	else
 	{
-		L_enumFunctionState = RET_NULL_PTR;
+		Local_FunctionStatus = E_NOT_OK;
 	}
 	
 	
-	return L_enumFunctionState;
+	return Local_FunctionStatus;
 }

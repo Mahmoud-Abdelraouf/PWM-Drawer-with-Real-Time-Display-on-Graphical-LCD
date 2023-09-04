@@ -2,6 +2,12 @@
     "C_Cpp.errorSquiggles": "enabled",
     "files.associations": {
         "dio_private.h": "c",
-        "dio_interface.h": "c"
-    }
+        "dio_interface.h": "c",
+        "std_types.h": "c",
+        "bit_math.h": "c",
+        "dio_config.h": "c"
+    },
+    "cSpell.words": [
+        "PINB"
+    ]
 }
