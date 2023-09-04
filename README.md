@@ -60,15 +60,13 @@ The Real-Time PWM Signal Visualization on Graphical LCD project is poised to off
 
 ## Budget
 
-_(Specify the budget for your project if applicable)_
+
 
 ## Timeline
 
-_(Provide a detailed timeline for your project, including start and end dates for each milestone)_
 
 ## Approval
 
-_(Include space for project approval or signatures if needed)_
 
 ---
 
