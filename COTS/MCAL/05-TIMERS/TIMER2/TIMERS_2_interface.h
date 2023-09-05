@@ -62,8 +62,10 @@
  */
 Std_ReturnType timer2_delay_ms(u32 delay_time);
 Std_ReturnType timer2_delay_us(u32 delay_time);
-Std_ReturnType timer2_write_value(const timer2_t *timer,u8 value);
-Std_ReturnType timer2_read_value(const timer2_t *timer,u8 *value);
+Std_ReturnType timer2_delay_10us(u32 delay_time);
+Std_ReturnType timer2_delay_10ms(u32 delay_time);
+
+
 
 /**
  * @} TIMER2_Functions
