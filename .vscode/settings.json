@@ -5,7 +5,8 @@
         "dio_interface.h": "c",
         "std_types.h": "c",
         "bit_math.h": "c",
-        "dio_config.h": "c"
+        "dio_config.h": "c",
+        "timers_2_config.h": "c"
     },
     "cSpell.words": [
         "PINB"
