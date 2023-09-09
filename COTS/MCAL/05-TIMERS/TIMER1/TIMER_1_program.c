@@ -12,6 +12,7 @@
 /**<_Helper Functions*/
 static void Timer1_setPrescaler(const Timer1_t *_timer);
 static void Timer1_edgeSelect(const Timer1_t *_timer);
+static void Timer1_setEdge(u8 edge);
 
 /**
  * @brief initializes timer1 module in input capture mode
@@ -124,6 +125,11 @@ Std_ReturnType Timer1_write(const Timer1_t *_timer, u16 _value)
 Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u16 *_freq, u8 *_duty_cycle)
 {
 	Std_ReturnType ret = E_OK;
+	u16 firstCapture = 0;
+	u16 secondCapture = 0;
+	u16 thirdCapture = 0;
+	u16 high_count = 0;	
+	u16 signal_period = 0;
 
 	if ((NULL == _timer) || (NULL == _value) || (NULL == _freq) || (NULL == _duty_cycle))
 	{
@@ -131,9 +137,39 @@ Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u16 *_freq, u8 *
 	}
 	else
 	{
-		TIMER1_CLEAR_INPUT_CAPTURE_FLAG();
+		*_value = (u16)((TIMER1_U8_TCNT1H_REG << 8) + TIMER1_U8_TCNT1L_REG);
+
 		TIMER1_U8_TCNT1H_REG = 0;
 		TIMER1_U8_TCNT1L_REG = 0;
+		TIMER1_CLEAR_INPUT_CAPTURE_FLAG();	// Clear the flag
+
+		Timer1_setEdge(RISING_EDGE);		// Set capture edge as Rising Edge
+		while(TIMER1_U16_TIFR_REG & 0x05); 	// Wait for flag
+		firstCapture = TIMER1_U16_ICR1_REG; // Take the first capture
+		TIMER1_CLEAR_INPUT_CAPTURE_FLAG();	// Clear the flag
+
+		Timer1_setEdge(FALLING_EDGE);		// Set capture edge as Falling Edge
+		while(TIMER1_U16_TIFR_REG & 0x05); 	// Wait for flag
+		secondCapture = TIMER1_U16_ICR1_REG;// Take the second capture
+		TIMER1_CLEAR_INPUT_CAPTURE_FLAG();	// Clear the flag
+
+		Timer1_setEdge(RISING_EDGE);		// Set capture edge as Rising Edge
+		while(TIMER1_U16_TIFR_REG & 0x05); 	// Wait for flag
+		thirdCapture = TIMER1_U16_ICR1_REG;	// Take the third capture
+		TIMER1_CLEAR_INPUT_CAPTURE_FLAG();	// Clear the flag
+
+		if ((firstCapture < secondCapture) && (secondCapture < thirdCapture))
+		{
+			high_count = secondCapture - firstCapture;
+			signal_period = thirdCapture - firstCapture;
+
+			*_freq = (u16)(F_CPU / (signal_period * _timer->prescalar));
+			*_duty_cycle = (u16)((high_count / signal_period) * 100);
+		}
+		else 
+		{
+			ret = E_NOT_OK;
+		}
 	}
 
 	return ret;
@@ -193,6 +229,25 @@ static void Timer1_setPrescaler(const Timer1_t *_timer){
 static void Timer1_edgeSelect(const Timer1_t *_timer)
 {
 	switch (_timer->edge)
+	{
+	case RISING_EDGE:
+		/* code */
+		SET_BIT(TIMER1_U8_TCCR1B_REG, 6);
+		break;
+
+	case FALLING_EDGE:
+		/* code */
+		CLR_BIT(TIMER1_U8_TCCR1B_REG, 6);
+		break;
+	
+	default:
+		break;
+	}
+}
+
+static void Timer1_setEdge(u8 edge)
+{
+	switch (edge)
 	{
 	case RISING_EDGE:
 		/* code */

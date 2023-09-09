@@ -18,7 +18,14 @@
 #include "TIMER_1_config.h"
 #include "../../01-DIO/DIO_interface.h"
 
+
+
 /************************  Sec: MACROS ******************************/
+
+#ifndef F_CPU
+#define F_CPU 16000000 //clock speed is 16MHz
+#endif
+
 /**<_prescaler*/
 #define PRESCALAR_DIV_BY_1 0
 #define PRESCALAR_DIV_BY_8 1
@@ -43,10 +50,12 @@
 
 #define TIMER1_CLEAR_INPUT_CAPTURE_FLAG() (CLR_BIT(TIMER1_U16_TIFR_REG, 5)) // Clear ICF1
 
-#define TIMER1_CLEAR_COUNTER_REG() (do { \
-	TIMER1_U8_TCNT1H_REG = 0;            \
-	TIMER1_U8_TCNT1L_REG = 0;            \
-} while (0))
+// #define TIMER1_CLEAR_COUNTER_REG() (do { \
+// 	TIMER1_U8_TCNT1H_REG = 0;            \
+// 	TIMER1_U8_TCNT1L_REG = 0;            \
+// } while (0))
+
+#define TIMER1_DISABLE					(SET_BIT(TIMER1_U8_TCCR1B_REG, 0))
 
 /************************  Sec: User Defined Data Types ******************************/
 
