@@ -164,7 +164,7 @@ Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u16 *_freq, u8 *
 			signal_period = thirdCapture - firstCapture;
 
 			*_freq = (u16)(F_CPU / (signal_period * _timer->prescalar));
-			*_duty_cycle = (u16)((high_count / signal_period) * 100);
+			*_duty_cycle = (u16)(((float)high_count / (float)signal_period) * 100.0);
 		}
 		else 
 		{
