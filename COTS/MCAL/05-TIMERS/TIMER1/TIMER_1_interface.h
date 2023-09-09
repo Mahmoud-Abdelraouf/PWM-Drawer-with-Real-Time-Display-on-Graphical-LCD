@@ -109,6 +109,6 @@ Std_ReturnType Timer1_write(const Timer1_t *_timer, u16 _value);
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue while performing this action
  */
-Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u16 *_freq, u8 *_duty_cycle);
+Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u32 *_freq, u8 *_duty_cycle);
 
 #endif /**<__TIMER_1_INTERFACE_H__*/
