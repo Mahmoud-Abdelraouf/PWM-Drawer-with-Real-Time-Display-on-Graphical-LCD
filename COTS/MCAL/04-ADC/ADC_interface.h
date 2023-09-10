@@ -1,13 +1,13 @@
-/********************************************************/
-/********** Name    : Mahmoud a raouf mahmoud ***********/
-/********** Date    : 25/10/2022              ***********/
-/********** SWC     : ADC                     ***********/
-/********** Version : 1.0                     ***********/
-/********************************************************/
-#ifndef ADC_INTERFACE_H
-#define ADC_INTERFACE_H
+/**************************************************************************/
+/************** Name    : Mahmoud A Raouf Mahmoud *************************/
+/************** Date    : 26/09/2022              *************************/
+/************** SWC     : ADC                     *************************/
+/************** Version : 0.2                     *************************/
+/**************************************************************************/
+#ifndef __ADC_INTERFACE_H_
+#define __ADC_INTERFACE_H_
 
-/*Single Ended*/
+/**< Single Ended */
 #define ADC_U8_CHANNEL_0			0
 #define ADC_U8_CHANNEL_1			1
 #define ADC_U8_CHANNEL_2			2
@@ -16,7 +16,7 @@
 #define ADC_U8_CHANNEL_5			5
 #define ADC_U8_CHANNEL_6			6
 #define ADC_U8_CHANNEL_7			7
-/*Differential Ended*/
+/**< Differential Ended */
 #define ADC_U8_CHANNEL_8			8
 #define ADC_U8_CHANNEL_9			9
 #define ADC_U8_CHANNEL_10			10
@@ -43,9 +43,9 @@
 #define ADC_U8_CHANNEL_31			31
 
 
-void ADC_voidInit(void);
+void ADC_Init(void);
 
-Error_State_t ADC_Get_DigitalValue(u8 copy_u8ChanneNo,u16 *copy_Pu16DigitalValue);
+Std_ReturnType ADC_GetDigitalValue(u8 Copy_ChannelNo, u16 *Copy_DigitalValue);
 
 
 #endif

@@ -1,0 +1,36 @@
+/*
+ * main.c
+ *
+ *  Created on: Sep 4, 2023
+ *      Author: karim
+ */
+/**< LIB */
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "avr/delay.h"
+
+/**< MCAL */
+#include "DIO_interface.h"
+
+/**< APP */
+
+int main(void)
+{
+	/**< Set pin 0 Port C to Be output */
+	DIO_SetPinDirection(DIO_PORTC, DIO_PIN0, DIO_OUTPUT);
+
+	for(;;)
+	{
+		/**< Pin 0 High */
+		DIO_SetPinValue(DIO_PORTC, DIO_PIN0, DIO_HIGH);
+
+		/**< Delay */
+		_delay_ms(100);
+
+		/**< Pin 0 High */
+		DIO_SetPinValue(DIO_PORTC, DIO_PIN0, DIO_LOW);
+		_delay_ms(100);
+	}
+
+}
+

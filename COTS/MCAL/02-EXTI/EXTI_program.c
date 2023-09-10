@@ -1,167 +1,165 @@
-/********************************************************/
-/********** Name    : Mahmoud a raoof mahmoud ***********/
-/********** Date    : 30/09/2022              ***********/
-/********** SWC     : EXTI                    ***********/
-/********** Version : 1.0                     ***********/
-/********************************************************/
-/*LIB*/
+/**************************************************************************/
+/************** Name    : Mahmoud A Raouf Mahmoud *************************/
+/************** Date    : 30/09/2022              *************************/
+/************** SWC     : EXTI                    *************************/
+/************** Version : 0.2                     *************************/
+/**************************************************************************/
+
+/**< LIB */
 #include "STD_TYPES.h"
-#include "ERROR_STATE.h"
 #include "BIT_MATH.h"
-/*MCAL*/
+/**< MCAL */
 #include "EXTI_interface.h"
 #include "EXTI_private.h"
 #include "EXTI_config.h"
 
 
-/*Global Pointer to a function*/
+/**< Global Pointer to a function */
 static void (*EXTI_APFEXTI[3])(void) = {NULL,NULL,NULL};
 
-Error_State_t EXTI_Error_StateEnable(u8 copy_u8EXTIIndex,u8 copy_u8EdgeIndex)
+Std_ReturnType EXTI_Enable(u8 Copy_EXTIIndex, u8 Copy_EdgeIndex)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
-	switch(copy_u8EXTIIndex)
+	Std_ReturnType Local_FunctionStatus = E_OK;
+
+	switch(Copy_EXTIIndex)
 	{
-		case EXTI_U8_INT0:
-			switch(copy_u8EdgeIndex)
+		case EXTI_INT0:
+			switch(Copy_EdgeIndex)
 			{
-				case EXTI_U8_RAISING_EDGE:
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC00_BIT);
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC01_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT0_BIT);
-				break;
-				case EXTI_U8_FALLING_EDGE:
-				CLR_BIT(EXTI_U8_MCUCR_REG,ISC00_BIT);
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC01_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT0_BIT);
-				break;
-				case EXTI_U8_ANY_LOGICAL_CHANGE:
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC00_BIT);
-				CLR_BIT(EXTI_U8_MCUCR_REG,ISC01_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT0_BIT);
-				break;
-				case EXTI_U8_LOW_LEVEL:
-				CLR_BIT(EXTI_U8_MCUCR_REG,ISC00_BIT);
-				CLR_BIT(EXTI_U8_MCUCR_REG,ISC01_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT0_BIT);
-				break;
-				default : L_enumFunctionState = RET_NOK;
-				break;
+				case EXTI_RAISING_EDGE:
+					SET_BIT(EXTI_MCUCR_R, ISC00_BIT);
+					SET_BIT(EXTI_MCUCR_R, ISC01_BIT);
+					SET_BIT(EXTI_GICR_R, INT0_BIT);
+					break;
+				case EXTI_FALLING_EDGE:
+					CLR_BIT(EXTI_MCUCR_R, ISC00_BIT);
+					SET_BIT(EXTI_MCUCR_R, ISC01_BIT);
+					SET_BIT(EXTI_GICR_R, INT0_BIT);
+					break;
+				case EXTI_ANY_LOGICAL_CHANGE:
+					SET_BIT(EXTI_MCUCR_R, ISC00_BIT);
+					CLR_BIT(EXTI_MCUCR_R, ISC01_BIT);
+					SET_BIT(EXTI_GICR_R, INT0_BIT);
+					break;
+				case EXTI_LOW_LEVEL:
+					CLR_BIT(EXTI_MCUCR_R, ISC00_BIT);
+					CLR_BIT(EXTI_MCUCR_R, ISC01_BIT);
+					SET_BIT(EXTI_GICR_R, INT0_BIT);
+					break;
+				default : Local_FunctionStatus = E_NOT_OK; break;
 			}
-		break;
-		case EXTI_U8_INT1:
-			switch(copy_u8EdgeIndex)
+			break;
+		case EXTI_INT1:
+			switch(Copy_EdgeIndex)
 			{
-				case EXTI_U8_RAISING_EDGE:
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC10_BIT);
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC11_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT1_BIT);
+				case EXTI_RAISING_EDGE:
+					SET_BIT(EXTI_MCUCR_R, ISC10_BIT);
+					SET_BIT(EXTI_MCUCR_R, ISC11_BIT);
+					SET_BIT(EXTI_GICR_R, INT1_BIT);
+					break;
+				case EXTI_FALLING_EDGE:
+					CLR_BIT(EXTI_MCUCR_R, ISC10_BIT);
+					SET_BIT(EXTI_MCUCR_R, ISC11_BIT);
+					SET_BIT(EXTI_GICR_R, INT1_BIT);
+					break;
+				case EXTI_ANY_LOGICAL_CHANGE:
+					SET_BIT(EXTI_MCUCR_R, ISC10_BIT);
+					CLR_BIT(EXTI_MCUCR_R, ISC11_BIT);
+					SET_BIT(EXTI_GICR_R, INT1_BIT);
+					break;
+				case EXTI_LOW_LEVEL:
+				CLR_BIT(EXTI_MCUCR_R, ISC10_BIT);
+				CLR_BIT(EXTI_MCUCR_R, ISC11_BIT);
+				SET_BIT(EXTI_GICR_R, INT1_BIT);
 				break;
-				case EXTI_U8_FALLING_EDGE:
-				CLR_BIT(EXTI_U8_MCUCR_REG,ISC10_BIT);
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC11_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT1_BIT);
-				break;
-				case EXTI_U8_ANY_LOGICAL_CHANGE:
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC10_BIT);
-				CLR_BIT(EXTI_U8_MCUCR_REG,ISC11_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT1_BIT);
-				break;
-				case EXTI_U8_LOW_LEVEL:
-				CLR_BIT(EXTI_U8_MCUCR_REG,ISC10_BIT);
-				CLR_BIT(EXTI_U8_MCUCR_REG,ISC11_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT1_BIT);
-				break;
-				default : L_enumFunctionState = RET_NOK;
-				break;
+				default : Local_FunctionStatus = E_NOT_OK; break;
 			}
-		break;		
-		case EXTI_U8_INT2:
-			switch(copy_u8EdgeIndex)
+			break;		
+		case EXTI_INT2:
+			switch(Copy_EdgeIndex)
 			{
-				case EXTI_U8_RAISING_EDGE:
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC10_BIT);
-				SET_BIT(EXTI_U8_MCUCR_REG,ISC11_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT1_BIT);
-				break;
-				case EXTI_U8_FALLING_EDGE:
-				CLR_BIT(EXTI_U8_MCUCSR_REG,ISC2_BIT);
-				SET_BIT(EXTI_U8_GICR_REG,INT2_BIT);
-				break;
-				default : L_enumFunctionState = RET_NOK;
-				break;
+				case EXTI_RAISING_EDGE:
+					SET_BIT(EXTI_MCUCR_R, ISC10_BIT);
+					SET_BIT(EXTI_MCUCR_R, ISC11_BIT);
+					SET_BIT(EXTI_GICR_R, INT1_BIT);
+					break;
+				case EXTI_FALLING_EDGE:
+					CLR_BIT(EXTI_MCUCSR_R, ISC2_BIT);
+					SET_BIT(EXTI_GICR_R, INT2_BIT);
+					break;
+				default : Local_FunctionStatus = E_NOT_OK; break;
 			}
-		break;	
-		default : L_enumFunctionState = RET_NOK;
-		break;
+			break;	
+		default : Local_FunctionStatus = E_NOT_OK; break;
 	}
-	return L_enumFunctionState;
+	return Local_FunctionStatus;
 }
 
-Error_State_t EXTI_Error_StateDisable(u8 copy_u8EXTIIndex)
+Std_ReturnType EXTI_Disable(u8 Copy_EXTIIndex)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
-	switch(copy_u8EXTIIndex) 
+	Std_ReturnType Local_FunctionStatus = E_OK;
+	switch(Copy_EXTIIndex) 
 	{
-		case EXTI_U8_INT0:
-		CLR_BIT(EXTI_U8_GICR_REG,INT0_BIT);
+		case EXTI_INT0:
+		CLR_BIT(EXTI_GICR_R, INT0_BIT);
 		break;
-		case EXTI_U8_INT1:
-		CLR_BIT(EXTI_U8_GICR_REG,INT1_BIT);
+		case EXTI_INT1:
+		CLR_BIT(EXTI_GICR_R, INT1_BIT);
 		break;
-		case EXTI_U8_INT2:
-		CLR_BIT(EXTI_U8_GICR_REG,INT2_BIT);
+		case EXTI_INT2:
+		CLR_BIT(EXTI_GICR_R, INT2_BIT);
 		break;
-		default : L_enumFunctionState = RET_NOK;
+		default : Local_FunctionStatus = E_NOT_OK;
 		break;
 	} 
-	return L_enumFunctionState;
+
+	return Local_FunctionStatus;
 }
 
 
-Error_State_t EXTI_Error_State_tEXTICallBack(void (*copy_PF)(void),u8 copy_u8EXTIIndex)
+Std_ReturnType EXTI_EXTICallBack(void (*Copy_PF)(void),u8 Copy_EXTIIndex)
 {
-	Error_State_t L_enumFunctionState = RET_OK;
-	if((copy_PF != NULL) && (copy_u8EXTIIndex<=EXTI_U8_INT2))
+	Std_ReturnType L_enumFunctionState = E_OK;
+
+	if((Copy_PF != NULL) && (Copy_EXTIIndex < 3))
 	{
-		EXTI_APFEXTI[copy_u8EXTIIndex] = copy_PF;
+		EXTI_APFEXTI[Copy_EXTIIndex] = Copy_PF;
 	}
 	else
 	{
-		L_enumFunctionState = RET_NOK;
+		L_enumFunctionState = E_NOT_OK;
 	}
+
 	return L_enumFunctionState;
 }
 
 
-
-
-/*prototype for ISR of EXTI0*/
+/**< prototype for ISR of EXTI0 */
 void __vector_1(void)	__attribute__((signal));
 void __vector_1(void)
 {
-	if(EXTI_APFEXTI[EXTI_U8_INT0] != NULL)
+	if(EXTI_APFEXTI[EXTI_INT0] != NULL)
 	{
-		EXTI_APFEXTI[EXTI_U8_INT0]();
+		EXTI_APFEXTI[EXTI_INT0]();
 	}
 }
 
-/*prototype for ISR of EXTI1*/
+/**< prototype for ISR of EXTI1 */
 void __vector_2(void)	__attribute__((signal));
 void __vector_2(void)
 {
-	if(EXTI_APFEXTI[EXTI_U8_INT1] != NULL)
+	if(EXTI_APFEXTI[EXTI_INT1] != NULL)
 	{
-		EXTI_APFEXTI[EXTI_U8_INT1]();
+		EXTI_APFEXTI[EXTI_INT1]();
 	}
 }
 
-/*prototype for ISR of EXTI2*/
+/**< prototype for ISR of EXTI2 */
 void __vector_3(void)	__attribute__((signal));
 void __vector_3(void)
 {
-	if(EXTI_APFEXTI[EXTI_U8_INT2] != NULL)
+	if(EXTI_APFEXTI[EXTI_INT2] != NULL)
 	{
-		EXTI_APFEXTI[EXTI_U8_INT2]();
+		EXTI_APFEXTI[EXTI_INT2]();
 	}
 }

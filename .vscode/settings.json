@@ -5,9 +5,12 @@
         "dio_interface.h": "c",
         "std_types.h": "c",
         "bit_math.h": "c",
-        "dio_config.h": "c"
+        "dio_config.h": "c",
+        "adc_private.h": "c"
     },
     "cSpell.words": [
+        "ADCH",
+        "ADCSRA",
         "PINB"
     ]
 }

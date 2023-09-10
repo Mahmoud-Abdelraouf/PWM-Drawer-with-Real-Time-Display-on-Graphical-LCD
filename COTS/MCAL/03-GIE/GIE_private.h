@@ -1,14 +1,26 @@
-/********************************************************/
-/********** Name    : Mahmoud a raoof mahmoud ***********/
-/********** Date    : 30/09/2022              ***********/
-/********** SWC     : GIE                    ***********/
-/********** Version : 1.0                     ***********/
-/********************************************************/
-#ifndef GIE_PRIVATE_H
-#define GIE_PRIVATE_H
+/**************************************************************************/
+/************** Name    : Mahmoud A Raouf Mahmoud *************************/
+/************** Date    : 21/09/2022              *************************/
+/************** SWC     : GIE                     *************************/
+/************** Version : 0.2                     *************************/
+/**************************************************************************/
+#ifndef __GIE_PRIVATE_H_
+#define __GIE_PRIVATE_H_
 
-#define GIE_U8_SREG_REG				*((volatile u8 *)0X5F)
+/**
+ * @brief Global Interrupt Enable (GIE) Register Address.
+ *
+ * This macro defines the memory address of the Global Interrupt Enable (GIE) register.
+ */
+#define GIE_SREG_R        (*((volatile u8 *)0X5F))
 
-#define GIE_U8_SREG_BIT				7
+/**
+ * @brief Global Interrupt Enable (GIE) Bit Position.
+ *
+ * This macro defines the bit position of the Global Interrupt Enable (GIE) bit
+ * within the Status Register (SREG).
+ */
+#define GIE_SREG_B        7
 
-#endif
+
+#endif /**< __GIE_PRIVATE_H_ */

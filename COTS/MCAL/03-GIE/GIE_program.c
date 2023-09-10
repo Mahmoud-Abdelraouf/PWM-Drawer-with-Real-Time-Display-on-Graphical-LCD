@@ -1,14 +1,14 @@
-/********************************************************/
-/********** Name    : Mahmoud a raoof mahmoud ***********/
-/********** Date    : 30/09/2022              ***********/
-/********** SWC     : EXTI                    ***********/
-/********** Version : 1.0                     ***********/
-/********************************************************/
-/*LIB*/
+/**************************************************************************/
+/************** Name    : Mahmoud A Raouf Mahmoud *************************/
+/************** Date    : 21/09/2022              *************************/
+/************** SWC     : GIE                     *************************/
+/************** Version : 0.2                     *************************/
+/**************************************************************************/
+
+/**< LIB */
 #include "STD_TYPES.h"
-#include "ERROR_STATE.h"
 #include "BIT_MATH.h"
-/*MCAL*/
+/**< MCAL */
 #include "GIE_interface.h"
 #include "GIE_private.h"
 #include "GIE_config.h"
@@ -16,10 +16,10 @@
 
 void GIE_voidEnable(void)
 {
-	SET_BIT(GIE_U8_SREG_REG,GIE_U8_SREG_BIT);
+	SET_BIT(GIE_SREG_R, GIE_SREG_B);
 }
 
 void GIE_voidDisable(void)
 {
-	CLR_BIT(GIE_U8_SREG_REG,GIE_U8_SREG_BIT);
+	CLR_BIT(GIE_SREG_R, GIE_SREG_B);
 }
