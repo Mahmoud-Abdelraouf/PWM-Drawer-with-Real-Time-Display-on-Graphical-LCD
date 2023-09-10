@@ -6,11 +6,7 @@
         "std_types.h": "c",
         "bit_math.h": "c",
         "dio_config.h": "c",
-<<<<<<< HEAD
-        "adc_private.h": "c"
-=======
         "timers_2_config.h": "c"
->>>>>>> edb48ad5c5d88d37fa11cf8d86359114b5b5be9b
     },
     "cSpell.words": [
         "ADCH",
