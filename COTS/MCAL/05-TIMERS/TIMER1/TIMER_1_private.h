@@ -26,5 +26,8 @@
 
 #define TIMER1_U16_ICR1_REG				*((volatile u16 *)0X46)
 
+#define TIMER1_U16_TIFR_REG				*((volatile u16 *)0X58)
+#define TIMER1_U16_TIMSK_REG			*((volatile u16 *)0X59)
+
 
 #endif
