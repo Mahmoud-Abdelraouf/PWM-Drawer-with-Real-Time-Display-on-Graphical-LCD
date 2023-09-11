@@ -82,6 +82,8 @@ Std_ReturnType Timer1_deinit(const Timer1_t *_timer)
 	}
 	else
 	{
+		TIMER1_U8_TCCR1A_REG = 0;
+		TIMER1_U8_TCCR1B_REG = 0;
 	}
 
 	return ret;
@@ -112,7 +114,8 @@ Std_ReturnType Timer1_write(const Timer1_t *_timer, u16 _value)
 }
 
 /**
- * @brief
+ * @brief	Reads the value of the counter and calculates the frequency and duty cycle 
+ * 			of PWM signals.
  *
  * @param _timer1 		pointer to timer1 module configurations @ref Timer1_t
  * @param _value  		pointer to value to be read from Timer1 register
@@ -122,7 +125,7 @@ Std_ReturnType Timer1_write(const Timer1_t *_timer, u16 _value)
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue while performing this action
  */
-Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u32 *_freq, u8 *_duty_cycle)
+Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u64 *_freq, u8 *_duty_cycle)
 {
 	Std_ReturnType ret = E_OK;
 	u16 firstCapture = 0;
@@ -163,7 +166,7 @@ Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u32 *_freq, u8 *
 			high_count = secondCapture - firstCapture;
 			signal_period = thirdCapture - firstCapture;
 
-			*_freq = (u16)(F_CPU / (signal_period * _timer->prescalar));
+			*_freq = (u64)((f64)(F_CPU) / (f64)(signal_period * 8));
 			*_duty_cycle = (u16)(((float)high_count / (float)signal_period) * 100.0);
 		}
 		else 

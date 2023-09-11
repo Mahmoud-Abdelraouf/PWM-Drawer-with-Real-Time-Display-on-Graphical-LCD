@@ -27,13 +27,13 @@
 #endif
 
 /**<_prescaler*/
-#define PRESCALAR_DIV_BY_1 0
-#define PRESCALAR_DIV_BY_8 1
-#define PRESCALAR_DIV_BY_64 2
-#define PRESCALAR_DIV_BY_256 3
-#define PRESCALAR_DIV_BY_1024 4
-#define EXTERNAL_CLK_SRC_FALLING 5
-#define EXTERNAL_CLK_SRC_RISING 6
+#define PRESCALAR_DIV_BY_1 			1
+#define PRESCALAR_DIV_BY_8 			8U
+#define PRESCALAR_DIV_BY_64 		64U
+#define PRESCALAR_DIV_BY_256 		256U
+#define PRESCALAR_DIV_BY_1024 		1024U
+#define EXTERNAL_CLK_SRC_FALLING 	6U
+#define EXTERNAL_CLK_SRC_RISING 	7U
 
 /**<_modes*/
 #define INPUT_CAPTURE_MODE 0
@@ -50,10 +50,6 @@
 
 #define TIMER1_CLEAR_INPUT_CAPTURE_FLAG() (CLR_BIT(TIMER1_U16_TIFR_REG, 5)) // Clear ICF1
 
-// #define TIMER1_CLEAR_COUNTER_REG() (do { \
-// 	TIMER1_U8_TCNT1H_REG = 0;            \
-// 	TIMER1_U8_TCNT1L_REG = 0;            \
-// } while (0))
 
 #define TIMER1_DISABLE					(SET_BIT(TIMER1_U8_TCCR1B_REG, 0))
 
@@ -61,10 +57,10 @@
 
 typedef struct
 {
-	u8 prescalar : 3;
+	u16 prescalar;
 	u8 timer_mode : 2;
 	u8 edge : 1;
-	u8 : 2;
+	u8 : 5;
 } Timer1_t;
 
 /************************  Sec: Software Interfaces ******************************/
@@ -109,6 +105,6 @@ Std_ReturnType Timer1_write(const Timer1_t *_timer, u16 _value);
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue while performing this action
  */
-Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u32 *_freq, u8 *_duty_cycle);
+Std_ReturnType Timer1_read(const Timer1_t *_timer, u16 *_value, u64 *_freq, u8 *_duty_cycle);
 
 #endif /**<__TIMER_1_INTERFACE_H__*/
