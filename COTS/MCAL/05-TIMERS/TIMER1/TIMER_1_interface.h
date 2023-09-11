@@ -50,9 +50,6 @@
 
 #define TIMER1_CLEAR_INPUT_CAPTURE_FLAG() (CLR_BIT(TIMER1_U16_TIFR_REG, 5)) // Clear ICF1
 
-
-#define TIMER1_DISABLE					(SET_BIT(TIMER1_U8_TCCR1B_REG, 0))
-
 /************************  Sec: User Defined Data Types ******************************/
 
 typedef struct
